@@ -1,0 +1,78 @@
+#VRML V2.0 utf8
+WorldInfo {
+ title "Untitled4"
+ info ["This Web3D Content was created with Vivaty Studio, a Web3D authoring tool"
+ "www.mediamachines.com"
+ "This Web3D Content was created with Vivaty Studio, a Web3D authoring tool"
+ "This Web3D Content was created with Vivaty Studio, a Web3D authoring tool"
+ "This Web3D Content was created with Vivaty Studio, a Web3D authoring tool"]
+}
+## Vizthumbnail  Thumb_PRACTICE_wrl15175151587618663.jpg
+DEF Import_PRACTICE_wrl Group {
+ children [
+  DEF DL NavigationInfo {
+   avatarSize [
+    .25 1.6 .75
+   ]
+   visibilityLimit 0
+   speed 1
+   headlight TRUE
+   type ["WALK"
+   "ANY"]
+  }
+  DEF Viewpoint1 Viewpoint {
+   description "Viewpoint1"
+   jump TRUE
+   fieldOfView 0.785
+   position 0 .1 1
+   orientation 0 0 1 0
+  }
+  DEF BASE Group {
+   children [
+    DEF movelamp PlaneSensor {
+    }
+    DEF dad_LAMPGROUP Transform {
+     children [
+      Shape {
+       appearance Appearance {
+        material DEF Red Material {
+         ambientIntensity 0.200
+         shininess 0.200
+         diffuseColor 1 0 0
+        }
+       }
+       geometry DEF GeoCylinder1 Cylinder {
+        height 0.010
+        radius 0.100
+       }
+      }
+      Group {
+       children [
+        DEF dad_LAMPARM Transform {
+         translation 0 .15 0
+         rotation 0 0 1 -.7
+         center 0 -.15 0
+         children [
+          DEF lamparm Shape {
+           appearance Appearance {
+            material USE Red
+           }
+           geometry DEF GeoCylinder2 Cylinder {
+            height 0.300
+            radius 0.010
+           }
+          }
+         ]
+        }
+        DEF movefirstarm SphereSensor {
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
+ROUTE movelamp.translation_changed TO dad_LAMPGROUP.set_translation
+ROUTE movefirstarm.rotation_changed TO dad_LAMPARM.set_rotation
